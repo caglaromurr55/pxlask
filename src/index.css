@@ -1,0 +1,434 @@
+/* ============================================
+   PIXEL AŞK - Global Styles
+   Eğlenceli, Sevimli, Retro Pastel Pixel Art Teması
+   Mobil Öncelikli (Mobile-First) Tasarım
+   ============================================ */
+
+/* CSS Değişkenleri */
+:root {
+  /* Eğlenceli & Sevimli Renk Paleti */
+  --bg-primary: #fff5f8;
+  --bg-card: #ffffff;
+  --bg-card-soft: #fff0f5;
+  --bg-darker: #fcedf2;
+
+  --pink: #ff5e88;
+  --pink-light: #ffb4c8;
+  --pink-soft: #ffe8ef;
+  --peach: #ffb88c;
+  --peach-light: #ffe5d9;
+  --lavender: #9d84fe;
+  --lavender-light: #e6e0ff;
+  --mint: #00c9a7;
+  --mint-light: #d4f7ef;
+  --sky: #4dabf7;
+  --sky-light: #e0f2fe;
+  --gold: #f59f00;
+  --gold-light: #fff3bf;
+  --red: #f03e3e;
+
+  /* Kontrast ve Pixel Çerçeveler */
+  --pixel-border: #3b2042;
+  --pixel-shadow: #28112e;
+  --pixel-highlight: rgba(255, 255, 255, 0.8);
+  --text-main: #2d1836;
+  --text-muted: #826c8d;
+  --text-light: #ffffff;
+
+  --font-pixel: 'Press Start 2P', cursive, monospace;
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+input, textarea {
+  user-select: auto;
+}
+
+html {
+  font-size: 14px;
+  background: #f8e8ee;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-pixel);
+  background: #f8e8ee;
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+}
+
+/* Mobil Arka Plan Kalp & Yıldız Deseni */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 94, 136, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(157, 132, 254, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 184, 140, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Mobil Çerçeve / Uygulama Kapsayıcısı */
+#app {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(85, 30, 60, 0.15);
+  border-left: 3px solid var(--pixel-border);
+  border-right: 3px solid var(--pixel-border);
+}
+
+/* Admin paneli piksel sınırlamalarından muaf, modern tam ekran/responsive */
+#app:has(.modern-admin-container) {
+  max-width: 100%;
+  border-left: none;
+  border-right: none;
+  box-shadow: none;
+  background: #f8fafc;
+}
+
+body:has(.modern-admin-container) {
+  background: #f8fafc;
+  display: block;
+}
+
+body:has(.modern-admin-container)::before {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  #app {
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
+}
+
+/* ============================================
+   Pixel Art Yardımcı Sınıflar
+   ============================================ */
+
+/* Pixel Kart */
+.pixel-card {
+  background: var(--bg-card);
+  border: 3px solid var(--pixel-border);
+  box-shadow: 3px 3px 0px var(--pixel-shadow);
+  padding: 16px;
+  position: relative;
+  transition: transform 0.15s ease;
+}
+
+/* Pixel Buton */
+.pixel-btn {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  padding: 10px 16px;
+  border: 3px solid var(--pixel-border);
+  box-shadow: 3px 3px 0px var(--pixel-shadow);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  color: var(--pixel-border);
+  background: var(--bg-card);
+  touch-action: manipulation;
+}
+
+.pixel-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px var(--pixel-shadow);
+}
+
+.pixel-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--pixel-shadow);
+}
+
+.pixel-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: 2px 2px 0px var(--pixel-shadow) !important;
+}
+
+/* Buton Renk Varyantları */
+.pixel-btn--pink,
+.pixel-btn--primary {
+  background: var(--pink);
+  color: #fff;
+}
+
+.pixel-btn--lavender {
+  background: var(--lavender);
+  color: #fff;
+}
+
+.pixel-btn--mint {
+  background: var(--mint);
+  color: #fff;
+}
+
+.pixel-btn--sky {
+  background: var(--sky);
+  color: #fff;
+}
+
+.pixel-btn--gold {
+  background: var(--gold);
+  color: #fff;
+}
+
+.pixel-btn--danger {
+  background: var(--red);
+  color: #fff;
+}
+
+/* Pixel Rozet */
+.pixel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 2px solid var(--pixel-border);
+  box-shadow: 2px 2px 0px var(--pixel-shadow);
+  font-size: 0.55rem;
+  background: #fff;
+  color: var(--text-main);
+}
+
+.pixel-badge--gold {
+  background: var(--gold-light);
+  color: #b36b00;
+  border-color: #b36b00;
+}
+
+.pixel-badge--pink {
+  background: var(--pink-soft);
+  color: var(--pink);
+  border-color: var(--pink);
+}
+
+/* Alt Navigasyon Barı (Mobil) */
+.mobile-nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 440px;
+  height: 64px;
+  background: #ffffff;
+  border-top: 3px solid var(--pixel-border);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 900;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-shadow: 0 -4px 15px rgba(59, 32, 66, 0.08);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.5rem;
+  gap: 3px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-radius: 6px;
+}
+
+.nav-item .nav-icon {
+  font-size: 1.15rem;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-item.active,
+.nav-item:active {
+  color: var(--pink);
+}
+
+.nav-item.active .nav-icon {
+  transform: scale(1.2) translateY(-2px);
+}
+
+/* Kaydırmalı Açılır Panel (Slide-up Drawer / Bottom Sheet) */
+.drawer-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(43, 24, 54, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.drawer-container {
+  width: 100%;
+  max-width: 440px;
+  max-height: 88vh;
+  background: #ffffff;
+  border-top: 4px solid var(--pixel-border);
+  border-left: 3px solid var(--pixel-border);
+  border-right: 3px solid var(--pixel-border);
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.25);
+  animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--pink-soft);
+  border-bottom: 3px solid var(--pixel-border);
+}
+
+.drawer-title {
+  font-size: 0.75rem;
+  color: var(--pixel-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drawer-close {
+  background: none;
+  border: 2px solid var(--pixel-border);
+  box-shadow: 2px 2px 0 var(--pixel-shadow);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  font-family: var(--font-pixel);
+  font-size: 0.7rem;
+  color: var(--pixel-border);
+  cursor: pointer;
+}
+
+.drawer-body {
+  padding: 18px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* İlerleme Çubuğu (Progress Bar) */
+.progress-container {
+  width: 100%;
+  height: 18px;
+  background: #f0e6ed;
+  border: 2px solid var(--pixel-border);
+  box-shadow: inset 1px 1px 0 rgba(0,0,0,0.1);
+  border-radius: 9px;
+  overflow: hidden;
+  position: relative;
+  margin: 8px 0;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff758c, #ff5e88);
+  border-radius: 7px;
+  transition: width 0.35s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.25) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.25) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 20px 20px;
+  animation: moveStripes 1s linear infinite;
+}
+
+@keyframes moveStripes {
+  from { background-position: 0 0; }
+  to { background-position: 20px 0; }
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.45rem;
+  color: var(--pixel-border);
+  font-weight: bold;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Animasyonlar */
+@keyframes heartFloat {
+  0% { transform: translateY(0) scale(0.9); opacity: 0.8; }
+  50% { transform: translateY(-8px) scale(1.05); opacity: 1; }
+  100% { transform: translateY(0) scale(0.9); opacity: 0.8; }
+}
+
+.floating-heart {
+  animation: heartFloat 2.5s ease-in-out infinite;
+}
+
+/* Sayfa Geçiş Animasyonları */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
